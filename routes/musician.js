@@ -21,6 +21,12 @@ router.get('/all', (req, res) => {
 });
 
 // retrieve a musician from data store
+router.get('/health', (req, res) => {
+     res.status('200').send("200-ok");
+ 
+});
+
+// health check
 router.get('/:id', (req, res) => {
   const { musician } = req.app.locals;
   musician.getMusician(req.params.id, (err, returnedMusician) => {
@@ -30,6 +36,7 @@ router.get('/:id', (req, res) => {
     res.status('200').send(returnedMusician);
   });
 });
+
 
 // modify existing musician or add a new one to the data store
 router.put('/:id', jsonParser, async (req, res) => {
